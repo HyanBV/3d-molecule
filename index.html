@@ -1,0 +1,27 @@
+<!DOCTYPE html><meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+	<title>MolViewer Demo - By Hyân Bringas</title>
+</head>
+<body>
+    <h5 style="text-align: center">Code Sourced by Hyân Bringas</h5>
+    <div id="mol3D" style="height:500px;width:500px"></div>
+
+    <script src="https://d3js.org/d3.v5.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/mrDoob/three.js@r97/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/BoboRett/MolViewer@v0.52/molViewer.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/mrDoob/three.js@r97/examples/js/effects/OutlineEffect.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/mrDoob/three.js@r97/examples/js/controls/OrbitControls.js"></script>
+
+    <script>
+        const Molecule = new MolViewer.Molecule()
+        Molecule.get3DFromSMILE( "C1CCC(N)C1" );
+
+        const mol3D = new MolViewer.Mol3D( null, document.getElementById( "mol3D" ) );
+        mol3D.init();
+
+        document.addEventListener( "ajaxComplete", () => { mol3D.Molecule = Molecule; mol3D.draw() } );
+    </script>
+
+
+</body>
